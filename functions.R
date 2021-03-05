@@ -198,8 +198,12 @@ CN_Model<-function(fnc_CNModel, CNavg = 75,IaFrac = 0.05,fnc_slope=0,
   return(fnc_CNModel)
 }
 
-library(EcoHydRology)
 package.skeleton("BSEHydroModels",list=c("soil_wetting_above_capacity",
                   "soilwetting","soildrying","TMWB_Model","CN_Model"))
 
 install.packages("BSEHydroModels", repos = NULL)
+
+#git config --global user.email "drfuka@vt.edu"
+#git config --global user.name "Daniel Fuka"
+
+
