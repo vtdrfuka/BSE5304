@@ -1,10 +1,3 @@
-# Cleaning up
-objects()
-rm(list=objects())
-#
-dir.create("~/Week07Sol")
-setwd("~/Week07Sol")
-
 if (!require("pacman")) install.packages("pacman")
 pacman::p_load(EcoHydRology,curl,httr,rnoaa,raster,shapefiles,rgdal,elevatr,soilDB)
 options("download.file.extra"="-L -k")
