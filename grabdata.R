@@ -1,13 +1,4 @@
-pacman::p_load(devtools)
-# install_github("vtdrfuka/BSE4304/BSEHyrdoModels")
 
-# Cleaning up
-objects()
-rm(list=objects())
-# Installing the packages we will play with today
-if (!require("pacman")) install.packages("pacman")
-pacman::p_load(elevatr,raster,soilDB,rgdal)
-pacman::p_load(EcoHydRology,curl,httr,rnoaa)
 myflowgage_id="0205551460"
 myflowgage=get_usgs_gage(myflowgage_id,begin_date = "2015-01-01",end_date = "2021-03-01")
 # Note that flow returned is in m3/day, but we want mm/day for the basin
