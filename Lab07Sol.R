@@ -1,5 +1,5 @@
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load(EcoHydRology,curl,httr,rnoaa,raster,shapefiles,rgdal,elevatr,soilDB)
+pacman::p_load(EcoHydRology,curl,httr,rnoaa,raster,shapefiles,rgdal,elevatr,soilDB,rgeos)
 options("download.file.extra"="-L -k")
 options("download.file.method"="curl")
 # Get our gold standard flow data from USGS 0205551460 
