@@ -69,7 +69,7 @@ browseURL("https://websoilsurvey.sc.egov.usda.gov/App/WebSoilSurvey.aspx")
 # "Create Download Link" in lower right hand corner
 # Right-Click on download link and "Copy Link Address" and 
 # paste into a url object:
-url="https://websoilsurvey.sc.egov.usda.gov/DSD/Download/AOI/exdr5cisnkfrdydkhn5ca1gh/wss_aoi_2021-03-19_09-54-08.zip"
+url="https://websoilsurvey.sc.egov.usda.gov/DSD/Download/AOI/emdfriehdwyjort5pohresl3/wss_aoi_2021-03-25_22-10-28.zip"
 download.file(url,"wss_aoi.zip")
 unzip("wss_aoi.zip")
 mysoil_ll=readOGR("wss_aoi_2021-03-19_09-54-08/spatial/soilmu_a_aoi.shp")
