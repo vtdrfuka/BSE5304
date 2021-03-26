@@ -72,7 +72,7 @@ browseURL("https://websoilsurvey.sc.egov.usda.gov/App/WebSoilSurvey.aspx")
 url="https://websoilsurvey.sc.egov.usda.gov/DSD/Download/AOI/emdfriehdwyjort5pohresl3/wss_aoi_2021-03-25_22-10-28.zip"
 download.file(url,"wss_aoi.zip")
 unzip("wss_aoi.zip")
-mysoil_ll=readOGR("wss_aoi_2021-03-19_09-54-08/spatial/soilmu_a_aoi.shp")
+mysoil_ll=readOGR("wss_aoi_2021-03-25_22-10-28/spatial/soilmu_a_aoi.shp")
 View(mysoil_ll@data)
 mysoil_utm = spTransform(mysoil_ll,crs_utm)
 plot(mysoil_utm,add=T)
