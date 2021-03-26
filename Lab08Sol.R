@@ -77,13 +77,13 @@ View(mysoil_ll@data)
 mysoil_utm = spTransform(mysoil_ll,crs_utm)
 plot(mysoil_utm,add=T)
 
-chorizon_tab=read.csv("wss_aoi_2021-03-19_09-54-08/tabular/chorizon.txt",sep="|",header=F)
-component_tab=read.csv("wss_aoi_2021-03-19_09-54-08/tabular/comp.txt",sep="|",header=F)
+chorizon_tab=read.csv("wss_aoi_2021-03-25_22-10-28/tabular/chorizon.txt",sep="|",header=F)
+component_tab=read.csv("wss_aoi_2021-03-25_22-10-28/tabular/comp.txt",sep="|",header=F)
 View(chorizon_tab)
 View(component_tab)
 #soildb_US_2003_mdb=list()
-#for (tblname in mdb_tables("wss_aoi_2021-03-19_09-54-08/soildb_US_2003.mdb")){
-#  soildb_US_2003_mdb[[tblname]]=read_mdb("wss_aoi_2021-03-19_09-54-08/soildb_US_2003.mdb",table = tblname)
+#for (tblname in mdb_tables("wss_aoi_2021-03-25_22-10-28/soildb_US_2003.mdb")){
+#  soildb_US_2003_mdb[[tblname]]=read_mdb("wss_aoi_2021-03-25_22-10-28/soildb_US_2003.mdb",table = tblname)
 #}
 # save(soildb_US_2003_mdb, file="soildb_US_2003_mdb.RData")
 # Download Soils MDB based Template
