@@ -29,14 +29,14 @@ soilwetting<-function(AWprev,dP,AWC){
 #
 #  START OF MODEL FUNCTION
 # Start of Model
-TMWB_Model=function(fnc_TMWB,fnc_slope=0, 
+TMWB_Model=function(fnc_TMWB,declat=45,fnc_slope=0, 
                     fnc_aspect=0,func_DAWC=.3,
                     func_z=1000,fnc_fcres=.3,TempBias=-3) {
   # Energy Balance based Snow Accumulation 
   # and Melt model from the EcoHydRology package.
   attach(fnc_TMWB)
   SNO_Energy=SnowMelt(date, P, MaxTemp+TempBias, 
-                      MinTemp+TempBias, myflowgage$declat, 
+                      MinTemp+TempBias, declat, 
                       slope = fnc_slope, aspect = fnc_aspect, tempHt = 1, 
                       windHt = 2, groundAlbedo = 0.25,
                       SurfEmissiv = 0.95, windSp = 2, forest = 0, 
@@ -53,7 +53,7 @@ TMWB_Model=function(fnc_TMWB,fnc_slope=0,
   attach(fnc_TMWB)
   fnc_TMWB$Albedo=.23
   fnc_TMWB$Albedo[fnc_TMWB$SNO>0]=.95
-  PET=PET_fromTemp(Jday=(1+as.POSIXlt(date)$yday),Tmax_C = MaxTemp,Tmin_C = MinTemp,lat_radians = myflowgage$declat*pi/180) * 1000
+  PET=PET_fromTemp(Jday=(1+as.POSIXlt(date)$yday),Tmax_C = MaxTemp,Tmin_C = MinTemp,lat_radians = declat*pi/180) * 1000
   fnc_TMWB$PET=PET
   detach(fnc_TMWB)
   rm(list="PET")
@@ -117,14 +117,14 @@ TMWB_Model=function(fnc_TMWB,fnc_slope=0,
 # 
 #CNModel
 # 
-CN_Model<-function(fnc_CNModel, CNavg = 75,IaFrac = 0.05,fnc_slope=0, 
+CN_Model<-function(fnc_CNModel, declat=45,CNavg = 75,IaFrac = 0.05,fnc_slope=0, 
                    fnc_aspect=0,func_DAWC=.3,func_z=1000,fnc_fcres=.3,TempBias=-3) {
   
   # Energy Balance based Snow Accumulation 
   # and Melt model from the EcoHydRology package.
   attach(fnc_CNModel)
   SNO_Energy=SnowMelt(date, P, MaxTemp+TempBias, 
-                      MinTemp+TempBias, myflowgage$declat, 
+                      MinTemp+TempBias, declat, 
                       slope = fnc_slope, aspect = fnc_aspect, tempHt = 1, 
                       windHt = 2, groundAlbedo = 0.25,
                       SurfEmissiv = 0.95, windSp = 2, forest = 0, 
@@ -140,7 +140,7 @@ CN_Model<-function(fnc_CNModel, CNavg = 75,IaFrac = 0.05,fnc_slope=0,
   fnc_CNModel$Albedo[fnc_CNModel$SNO>0]=.95
   PET=PET_fromTemp(Jday=(1+as.POSIXlt(date)$yday),
                    Tmax_C = MaxTemp,Tmin_C = MinTemp,
-                   lat_radians = myflowgage$declat*pi/180) * 1000
+                   lat_radians = declat*pi/180) * 1000
   fnc_CNModel$PET=PET
   detach(fnc_CNModel)
   rm(list="PET")
