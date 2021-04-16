@@ -118,15 +118,17 @@ TMWB_Model=function(fnc_TMWB,fnc_slope=0,
 #CNModel
 # 
 CN_Model<-function(fnc_CNModel, CNavg = 75,IaFrac = 0.05,fnc_slope=0, 
-                   fnc_aspect=0,func_DAWC=.3,func_z=1000,fnc_fcres=.3) {
+                   fnc_aspect=0,func_DAWC=.3,func_z=1000,fnc_fcres=.3,TempBias=-3) {
   
   # Energy Balance based Snow Accumulation 
   # and Melt model from the EcoHydRology package.
   attach(fnc_CNModel)
-  SNO_Energy=SnowMelt(date, P, MaxTemp-3, MinTemp-3, myflowgage$declat, 
+  SNO_Energy=SnowMelt(date, P, MaxTemp+TempBias, 
+                      MinTemp+TempBias, myflowgage$declat, 
                       slope = fnc_slope, aspect = fnc_aspect, tempHt = 1, 
-                      windHt = 2, groundAlbedo = 0.25,SurfEmissiv = 0.95, windSp = 2, 
-                      forest = 0, startingSnowDepth_m = 0,startingSnowDensity_kg_m3=450)
+                      windHt = 2, groundAlbedo = 0.25,
+                      SurfEmissiv = 0.95, windSp = 2, forest = 0, 
+                      startingSnowDepth_m = 0, startingSnowDensity_kg_m3=450)
   # We will update the -3 in the above to be a lapse rate adjustment
   detach(fnc_CNModel)
   fnc_CNModel$SNO=SNO_Energy$SnowWaterEq_mm
